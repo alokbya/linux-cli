@@ -1,0 +1,45 @@
+1.
+    :r! cat /home/courses/140u-doug.jones/paradise-lost.txt | sed -e :a -e 's/^.\{1,78\}$/ &/;ta' | head
+    
+    This command forces executes the bash command using the (r) output buffer. The bang (!) is used 
+    within vim to execute the shell command. This vim command captures the standard output of this
+    piped command and passes it into the buffer.
+
+                 ﻿The Project Gutenberg EBook of Paradise Lost, by John Milton
+                                                                              
+              This eBook is for the use of anyone anywhere at no cost and with
+          almost no restrictions whatsoever.  You may copy it, give it away or
+           re-use it under the terms of the Project Gutenberg License included
+                                with this eBook or online at www.gutenberg.net
+                                                                              
+                                                                              
+                                                          Title: Paradise Lost
+                                                                             
+2.  
+    :r! awk 'BEGIN{FS=":"}$1 ~ /doug.jones/{print $1}' /etc/passwd | sed 's/^/finger /' | bash
+
+    This command is the same as the one above. r is used to designate the output
+    buffer, where it is sent the output (and into the buffer) the command that
+    follows the bang (!).
+
+    Login: doug.jones     			Name: INSTRUCTOR Doug Jones
+    Directory: /home/student/doug.jones 	Shell: /bin/bash
+    Last login Tue Oct 30 13:08 (PDT) on pts/31 from sytcb312m4089.ad.pcc.edu
+    Mail last read Tue Oct 30 13:09 2018 (PDT)
+    No Plan.
+
+    
+3.  
+    cat /home/courses/140u-doug.jones/paradise-lost.txt | sed -e :a -e 's/^.\{1,78\}$/ &/;ta' | head
+    
+    :33w !bash 
+    
+    This vim command tells vim to execute line 30 by writing it, and funneling it to the shell program.
+
+4.  
+    :r! awk 'BEGIN{FS=":"}$1 ~ /doug.jones/{print $1}' /etc/passwd | sed 's/^/finger /' | bash
+    
+    :40w !bash >> ~/answers3e
+
+    This command tells vim to write line 40 into bash and execute using the shell program. Then 
+    to write (append) the standard output to ~/answers3e

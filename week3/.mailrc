@@ -1,0 +1,5 @@
+set EDITOR="/usr/bin/vim"
+set quote=" "
+set autobcc="alaa.alokby1@syccuxas01.pcc.edu"
+set VISUAL="/usr/bin/vim"
+

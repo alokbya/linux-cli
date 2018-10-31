@@ -1,0 +1,13 @@
+1.   mailx -f ~/mbox
+2.   set VISUAL=/usr/bin/vim   
+3.   set EDITOR=/usr/bin/vim
+4.   :n
+5.   .
+6.   d (from doug.jones)
+7.   mailx -a ~/.mailrc -s"Delete this message" doug.jones < /dev/null
+8.   ~v
+9.   h
+10.  z-
+11.  Mv 
+12.  x
+13.  set VISULAL=/usr/bin/vim, set EDITOR/usr/bin/vim. I choose these commands because of the value they add to reading and writing mail messages. Aside from this, I have not found other commands to add.
