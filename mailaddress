@@ -1,0 +1,1 @@
+mailx -a answers3a -s"CS 140U Practice 3A Submission" doug.jones < /dev/null

@@ -1,0 +1,38 @@
+1. What is your G-Number?
+    G-03681314
+
+2. Why are you taking CS 140U? What are your goals for this class?
+    I am taking CS 140U as a pre-requisite course for CS 162. I am also very interested in learning about Linux, its history, and the tools that are embedded in it. I am looking forward to learning how to navigate a Linux machine from the command-line, and hope to walk away from this course as a comfortable Linux user. 
+
+3. Are there specific topics or skills you wish to learn in this class?
+    I am looking to learn the fundamentals of UNIX/Linux during this course. I am interested in the network portion of this class. I would also like to learn how to configure .vimrc files.
+
+4. What are the most important things the instructor can do to help you succeed in class?
+    I would like for the instructor to be very clear with the expectations of this course! This comes down to file names, which have so far been specified. Clarity and open communication channels will help in this course. 
+
+5. What are the most important things the instructor should avoid doing in this class?
+    I can't think of anything important enough to write down.
+
+6. What are the most important things the instructor should know about you?
+    Nothing special. I am here to learn, and I would like prompt feedback. I would also like to hear about opportunities to continue learning, or to go beyond the scope of this class. Thank you for posting about the cyber-security team!
+
+7. List three characteristics of free software?
+    Free software allows for the user to copy, modify, and redistribute the source code, so long as it's license stays attached to it. A key point is that it is free in the sense of free speech, not free beer.  
+
+8. In what language is Linux written?
+    C
+
+9. Why is the linux filesystem referred to as hierarchial?
+    Because it is a structure of directories, like a tree. This helps users track files by grouping related files and subdirectories into each directory. This also adds consistency to each Linux system.
+
+10. Give three examples of poor password choices, and explain why each example is a poor password?
+      A word from the dictionary would be a poor password, because it is easy to guess with a simple password cracker and dictionary text file. Pet names or birthdays, as well as children names are poor passwords because they can be discovered easily by others around you. A password that is a variant of your username is another example of a poor password, because it is likely a simple alphanumeric sequence that can be guessed easily. 
+
+11. What is the name of the PCC Linux server?
+    Darwin
+
+12. What is your userid on the PCC Linux server?
+    alaa.alokby1
+
+13. If you forget the password for your PCC Linux account, what should you do?
+    Call the help desk, contact admin.

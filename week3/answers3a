@@ -1,0 +1,21 @@
+1.      vim /home/courses/140u-doug.jones/paradise-lost.txt
+2.      :w
+3.      :q!
+4.      1G
+5.      LG
+6.      534G
+7.      i, a, o
+8.      ESC
+9.      :
+10.     Q
+11.     :quit
+12.     :534s/A/B
+13.     :534,536s/a/b/g
+14.     :530,540s/and//g
+15.     :530,540s/^/PCC FILE/g
+16.     :530,540s/$/FILE PCC/g
+17.     gg, :/BELIAL
+18.     LG, :?BELIAL
+19.     M
+20.     :530,540d
+
