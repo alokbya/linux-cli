@@ -1,0 +1,148 @@
+This section is all about running multiple processes.
+
+Processes that controls the keyboard is the foreground process. Everything
+else is a background process. 
+
+ps
+Process status. Shows all processes for current login session.
+Process ID, Terminal, CPU time, current command
+
+ps -l
+OUTPUT:
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  7546  1257 31456  0  80   0 -  3271 wait   pts/15   00:00:00 bash
+0 S  7546  1258  1257  0  80   0 -  3271 wait   pts/15   00:00:00 bash
+0 R  7546  1259  1258  0  80   0 -  4246 -      pts/15   00:00:00 ps
+0 S  7546 22681 22680  0  80   0 -  4335 wait   pts/15   00:00:00 bash
+0 S  7546 31456 22681  0  80   0 - 12213 -      pts/15   00:00:00 vim
+
+PID - Process number
+TTY - Terminal number
+TIME - CPU time used over life of process
+CMD - Current command (if any) executing
+F - Process flags(1-forked but not exec, 4-used super-user privileges)
+S - Process state (R-runnable, S-Sleep, Z-zombie, T-stopped, D-wait)
+UID - User number of process owner
+PPID - Process number of parent process
+C - CPU usage (percentage)
+PRI - Scheduling priority
+NI - Nice value
+ADDR - Memory address of the process
+SZ - Approximate amount of memory used by the process
+WCHAN - Memory address of event process is waiting for
+
+Find who UID 7546 is:
+
+grep 7546 /etc/passwd (this file helps translate alphanumeric to numeric data)
+OUTPUT:
+alaa.alokby1:x:7546:1003:STUDENT IN 48287 46358:/home/student/alaa.alokby1:/bin/bash
+
+Every process has a parent.
+ps -lu alaa.alokby1
+OUTPUT:
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  7546  1815 31456  0  80   0 -  3271 wait   pts/15   00:00:00 bash
+0 S  7546  1816  1815  0  80   0 -  3271 wait   pts/15   00:00:00 bash
+0 R  7546  1817  1816  0  80   0 -  4555 -      pts/15   00:00:00 ps
+4 S  7546 22558     1  0  80   0 -  9262 SyS_ep ?        00:00:00 systemd
+5 S  7546 22559 22558  0  80   0 - 17728 sigtim ?        00:00:00 (sd-pam)
+5 S  7546 22560 22555  0  80   0 - 22181 core_s ?        00:00:00 sshd
+0 S  7546 22561 22560  0  80   0 -  4335 wait   pts/13   00:00:00 bash
+5 S  7546 22625 22619  0  80   0 - 22181 core_s ?        00:00:00 sshd
+0 S  7546 22626 22625  0  80   0 -  4335 n_tty_ pts/14   00:00:00 bash
+5 S  7546 22680 22677  0  80   0 - 22181 core_s ?        00:00:00 sshd
+0 S  7546 22681 22680  0  80   0 -  4335 wait   pts/15   00:00:00 bash
+5 S  7546 22739 22732  0  80   0 - 22215 core_s ?        00:00:00 sshd
+0 S  7546 22740 22739  0  80   0 -  4335 wait   pts/16   00:00:00 bash
+0 S  7546 22905 22740  0  80   0 - 12219 core_s pts/16   00:00:00 vim
+0 S  7546 23311 22561  0  80   0 - 12213 core_s pts/13   00:00:00 vim
+0 S  7546 31456 22681  0  80   0 - 12213 -      pts/15   00:00:00 vim
+
+All process for this user id, regardless if they are in the login session or not.
+
+ps -l 1
+OUTPUT:
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+4 S     0     1     0  0  80   0 -  9931 SyS_ep ?          0:16 /sbin/init showopts
+
+Give the ps command a particular process id number. This is the kernel (or, a key process id. 0 would 
+be the kernel, and so there is no actual sub process).
+
+Logging in creates a subprocess. The ownership transfers from the kernel to the user.
+
+ps -e
+Process of everything on system
+
+ps -le
+Get all info for everything on system.
+
+ps -le | more
+Get more info (lookup what more is... )
+
+top 
+An interactive display of things actually using CPU time. 
+Organized hierarchy. 
+
+
+MANAGING PROCESSES
+fg - foreground (controls keyboard)
+bg - background (everything else)
+
+All these processes can share monitor and keyboard, but we don't want that to happen. 
+It gets really confusing if you do so.
+
+  in vim out of insert mode, stops the current foreground process. Places it in a 
+suspended state. Now it will sit in a job que.
+
+Job que is list of jobs not in foreground.
+
+job
+lists current jobs.
+
+fg 1
+brings Job 1 back to foreground. Can start editing vim file again.
+
+
+START A PROGRAM IN THE BACKGROUND
+ls -l / &
+Ending command with ampersand says this is a background job.
+[1] 5032
+Process number 1, using process 5032  to execute the command.
+
+When multiple processes are sharing the output, it gets very muddled.
+
+ls -R . > tmp &
+Do a listing and put the output into 'tmp'. Keep it in the background to avoid cluttering
+up the screen.
+
+***Always be redirecting the output somewhere else so it doesn't clutter up the screen.
+
+ always puts the process in stopped status. Can't execute anymore. Not in background yet.
+
+Active foreground.
+Active background.
+Stopped ().
+
+***vim requires the keyboard, so it will always be in a stopped state if running 
+while not in the foreground.
+
+Jobs are a bash thing.
+Processes are a system thing.
+
+*** Can always refer to things as a process number, but can only refer to job numbers
+within bash.
+
+2>/dev/null
+Redirect standard error to device/null.
+1>tmp
+Redirect standard output to a tmp file.
+
+ to stop the program if taking too long (places process in stopped status)_
+
+To continue in bg...
+bg <job number>
+
+For true multitasking, you can really only have one program running that requires the keyboard.
+
+
+

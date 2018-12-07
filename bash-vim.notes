@@ -1,0 +1,20 @@
+OUTPUT CAPTURE (insert output into buffer):
+    :r !who
+    r   output buffer
+    !   vim, execute shell command
+    who execute the who command (bash)
+    ***capture the standard output of who command and pass it into buffer***
+
+    :2r !ls
+    **Take the output of the command and place it after line 2***
+USING BASH CMDs (buffer contents into bash command):
+    (filtering - passing commands through a bash filter)
+    :1,$! cut -d' ' -f1        
+    ***for each line of input file, used cut command to isolate each word***
+    :1,$!sort -t'/' -k2
+RUN BASH FROM VIM (execute from buffer to bash command):
+    :1w !bash
+    1       line 1 (can be range 1,5)
+    w       write
+    !       vim execute bash command
+    bash    bash

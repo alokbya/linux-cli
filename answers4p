@@ -1,0 +1,87 @@
+1.
+mkdir ~/answers4p
+
+mkdir creates a directory and takes an argument that will designate the name and
+location of the new directory
+
+2. 
+chmod u+rwx ~/answers4p
+
+chmod command changes permissions on a file. u designates that the following changes
+are for the owner. + tells the command that we are adding permissions. rwx means
+to read, write, and execute. the final argument is the file name, which these 
+modified permissions are changing.
+
+3.
+setfacl --modify u:doug.jones:rwx ~/answers4p
+
+setfacl sets file access control lists. --modify tells the command that 
+we want to make modifications on the file in the argument list. u specifies that
+this change is for a user (owner). doug.jones is the user who is being added. rwx
+are the permissions given to doug.jones (read, write, execute). ~/answers4p is the file
+that he will have these permissions for.
+
+4. 
+touch ./-i
+
+touch changes file timestamps, but can be used in this instance to create a file.
+the created file address is in the working directory, as shown with './'. -i is the 
+file name.
+
+5.
+find ./ -mmin +1440 -delete
+
+the find command searches for files in the ./ (working) directory. -mmin is looking for 'modified' files
+and using a time step in minutes. +1440 is used to find files modified more than 1440 minutes ago. -delete
+is used to delete all files that fit these specifications.
+
+6.
+find . -regextype sed -regex ".*/[aeiou].\{7\}" -delete
+
+find is used to find files. '.' is used to designate the working directory. -regextype sed sets the type of
+regex that will be used to filter files. -regex precedes the regex statement which is 
+captured in quotes. -delete will delete all files that match the regex expression in the working directory.
+
+7.
+find .  "*.cpp" -exec grep -il '#include' {} \;
+
+find is used to find files. '.' contains the find command to the working directory. "*.cpp" is used to 
+find C++ files with '.cpp' extensions. grep -il '#include' {} \; uses grep go search for '#include' within 
+the contents of each file.
+
+8.
+find . -type l -delete
+
+-type l returns to the find command a list of files that are type 'link'. -delete deletes all files that
+have matched.
+
+9.
+ls [aeiou]*[wzy] -1
+
+ls lists the files in the directory. the glob [aeiou]*[wzy] looks for files
+with an a, e, i, o, or u in the beginning of the file name, followed by
+any number of characters, and ending with wzy. the -1 tells the ls command
+to output one filename per line.
+
+10.
+ls ./?? ./???? ./?????? ./???????? -d -1
+
+ls lists the files that match the following grep expression. ./ refers to the 
+current directory. each question mark resembles one instance of any character.
+-d will suppress contents of files. -1 lists all files one to a line.
+
+11. 
+find . -regextype sed -regex ".*/.\{8\}" -printf "%s\n"
+
+find looks for files within given parameters. '.' refers to the current working directory.
+-regextype sed says that we will be using the sed version of regex. -regex prefaces the regex 
+string that will be used to filter results. ".*/.\{8\}" filters files in this directory
+that have names which are 8 characters in length. -printf "%s\n" prints the file length 
+of each file that passes the regex criteria, and then prints a newline. 
+
+12. 
+find . -printf "%m:%f\n" | sort -r | head -1
+
+This command prints the files in the current working directory, and their 
+respective octal permissions (octal permissions:filename). Then sorts in reverse
+order (used so that highest permission is placed at the top).

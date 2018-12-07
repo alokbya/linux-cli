@@ -1,0 +1,62 @@
+1. (a)
+printenv | sort | nl
+
+printenv prints each environment variable in the shell process. sort will sort the 
+output  from printenv, alphabetically. nl creates a numbered list from the sorted
+output.
+
+2. (b)
+echo $JAVA_ROOT
+
+echo prints to the console. $JAVA_ROOT yields the value of the variable JAVA_ROOT.
+
+3. (c)
+PATH=$PATH:~/:
+
+Assigns to PATH the value of PATH($PATH) and home(~/), and current working directory(:).
+
+4. (d)
+ps -A | awk '{ print $1,$3 }' 
+ps -eo pid,time
+
+ps prints processes that are currently running. -A flag prints all system processes. awk command prints 
+the specific columns 1,3 that correspond with PID and CPU time.
+
+5. (e)
+grep -lr "doug.jones" 1>~/out 2>/dev/null
+
+grep searches within files(-l)_recursively (-r)_for the string "doug.jones", and directs the
+standard output into a file named ~/out (1>), and the standard errors into a file
+named /dev/null (2>).
+
+6. (f)
+kill $(ps -eo pid | grep ".*[02468]$")
+
+kill will accept an argument that is a list of processes running (ps -e) with pid numbers (-o pid) 
+that are filtered through grep. kill terminates the processes.
+
+7. (g)
+/home/courses/140u-doug.jones/zombie_maker & 1>/dev/null
+
+this file is executable so I am able to type in the file path and execute it. & tells it to 
+run in the background. 1> directs the standard output to /dev/null.
+
+8. (h)
+ps -eo pid,ppid,wchan
+
+ps lists every -e process and is formatted with pid, ppid, and wchan headers.
+
+9. (i)
+kill %1
+
+kills job number 1.
+
+10. (j)
+grep -R "int main(int argc, char **argv)" / | sort >~/cpp_files &
+
+grep searches recursively through directory trees starting at root for the pattern "int main..."
+and directs the results (standard output) to cpp_files. The results are sorted in alphabetical order.
+
+
+
+

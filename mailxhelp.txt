@@ -1,0 +1,3 @@
+mbox contains emails that I've read
+
+unread mail in /var/spool/mail/alaa.alokby1

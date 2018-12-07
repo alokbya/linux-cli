@@ -1,0 +1,28 @@
+
+# Answers
+1.
+find . -maxdepth 1 -size +2b
+finds all files in working directory. '-maxdepth 1' does not look into directories
+within the working directories, and stays at the top level. -size +2b adds a searching
+parameter for files whose size exceeds 2 blocks (512 bytes/block standard).
+
+2.
+find ./ -regextype sed -regex ".*/[\^\*\\].*" -printf "%i\n"
+finds all files in working directory that fit the given searching criteria. 
+-regextype sed sets the type of regex used to create the searching criteria.
+-regex  ".*/[\^\*\\].*" looks for files that begin with a '^', '*', or '\' 
+and prints the inode number of each file that passes the criteria, with '%i'
+followed by a new line character '\n'
+
+3.
+find / -printf "%i\n" | sort | uniq -d
+find at root files with inode ("%i"). Sort these files and isolate files
+that are duplicates (uniq -d).
+
+4.
+find . ! -executable
+Searches the current directory (.). Looks for NON (!) executable files (-executable)
+
+5.
+find . -executable
+Searches the current directory (.). Looks for executable files (-executable)

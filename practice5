@@ -1,0 +1,115 @@
+C S   1 4 0 U   P R A C T I C E   A S S I G N M E N T
+=====================================================
+Assignment:    practice5
+Term:          Fall 2018
+Instructor:    Doug Jones
+
+INTRODUCTION
+============
+This assignment focuses on process and job management
+
+This is a practice exercise, and you may re-submit this exercise as 
+needed in order to earn a score of '10'.   You must score a '10' on
+this assignment before submitting the assessment exercise for this module.
+
+GRADING
+=======
+     1.   All commands should display ONLY the requested output, i.e.
+          be sure to filter out all extraneous information from the display.
+          (19% of assignment grade)
+
+     2.   All commands must execute and produce the correct output when
+          executed exactly as typed (command text from your submission
+          will be passed directly to bash for execution)
+          (50% of assignment grade)
+
+     3.   Your explanation of the command must be complete and accurate.
+          (31% of assignment grade)
+
+     NOTE: The term "command" means a bash command line, which may include
+           pipes and redirection, but may not include a command separator.
+
+INSTRUCTIONS
+============
+1.   Compose an email to your instructor's Linux email account with the subject:
+     CS 140U Practice 5 Submission
+
+     The body of your email should contain your responses to the following tasks.
+     There should be no attachment to this email - your answers should be in the
+     message body.
+
+     Label each response clearly so we know what task is being addressed.  After each
+     response, explain how your command works, including each option used.
+
+2.   Send the email when you have completed your responses.
+
+3.   Here are the tasks for this assignment:
+
+     (a)  Write a bash command that will display the value of all environment variables
+          defined in your shell process, sorted in alphabetical order, and numbered.
+          Here is a sample of the type of output your command should produce:
+
+     1	}
+     2	ALSA_CONFIG_PATH=/etc/alsa-pulse.conf
+     3	AUDIODRIVER=pulseaudio
+     4	BASH_FUNC_mc%%=() {  . /usr/share/mc/mc-wrapper.sh
+     5	COLORTERM=1
+
+     (b)  Write a bash command that will display the value (and only the value) of the
+          JAVA_ROOT environment variable.   Here is a sample of the type of output your
+          command should produce:
+
+/usr/lib64/jvm/jre
+
+     (c)  Write a bash command that will add your working directory and your home directory
+          to the current value of the PATH variable.  Make sure your new PATH value works
+          no matter what your current working directory might be.
+
+
+     (d)  Write a bash command that will display the process ID number and the total CPU time
+          for each process on the system.  Do not display any additional information. Here is a
+          sample of the type of output your command should produce:
+
+PID TIME
+24648 00:00:00
+25431 00:00:00
+27567 00:00:00
+27568 00:00:00
+27569 00:00:00
+27570 00:00:00
+
+     (e)  Write a bash command that will display the name of every file on the Linux system
+          whose file contaent contains the string "doug.jones".  The command must run in the
+          background, must redirect standard error to /dev/null, and must redirect standard
+          output to ~/out.
+
+     (f)  Write a bash command that will kill all of the even-numbered processes associated 
+          with your userid, and no other processes.
+
+     (g)  Write a bash command that will start the program
+          /home/courses/140u-doug.jones/zombie_maker
+          as a background process, with standard output redirected to /dev/nulthat will kill all of the even-numbered processes associated 
+          with your userid, and no other processes.
+
+     (g)  Write a bash command that will start the program
+          /home/courses/140u-doug.jones/zombie_maker
+          as a background process, with standard output redirected to /dev/null.
+          
+          This program will create a zombie process.
+
+     (h)  Write a bash command that will display the process id, parent process id, and wait
+          channel for all zombie processes on the server.  Do not display any additional
+          information.  Here is an example of the type of output your command should produce:
+28318 28317 exit
+
+     (i)  Write a bash command that will kill job 1.
+
+     (j)  Write a bash command that will generate a file named
+          ~/cpp_files
+          that contains the name and absolute path of all files on the system
+          that contain the line
+          int main(int argc, char **argv)
+
+          The contents of the file ~/cpp_files should be in alphabetical order.  The
+          command you create should run in background, and redirect standard 
+          error to the file ~/stderr.   

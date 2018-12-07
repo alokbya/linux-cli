@@ -1,0 +1,70 @@
+SCORE:
+
+    COMMENTS:
+
+        Thanks,
+            - Doug
+
+
+Question 1: Create directory
+mkdir ./assess3
+
+
+Question 2: Copy files
+cp /home/courses/140u-doug.jones/{main.cpp,main.h,makefile} ./assess3/
+
+
+Question 3: List directory
+ls -l ./assess3/
+total 12
+-rw------- 1 alaa.alokby1 students 738 Nov  7 11:33 main.cpp
+-rw------- 1 alaa.alokby1 students 284 Nov  7 11:33 main.h
+-rw------- 1 alaa.alokby1 students  86 Nov  7 11:33 makefile
+
+
+Question 4: main.cpp contents
+r ./assess3/main.cpp
+#include "main.h"
+using namespace std;
+int main(int argc, char **argv) 
+{
+     auto my_time = chrono::system_clock::to_time_t(chrono::system_clock::now());
+     char * my_time_string = ctime(&my_time);
+     my_time_string[strlen(my_time_string) - 1] = '\0';
+
+//3.
+     uid_t my_userid;
+     char * my_username;
+     my_userid = getuid();
+//1.  Course:        CS 140U
+     my_username = getlogin(); 
+
+     std::cout << "[" << __FILE__ << " compiled on " << __DATE__ << " " << __TIME__ << "]" << std::endl;
+//2. Assignment:    Assessment 3
+     std::cout << "[Program Executed " << my_time_string << " by " << my_username << " (UID " << my_userid << ")]" << std::endl;
+     std::cout << "Hello World!" << std::endl;
+
+//0.
+     return 0;
+}
+
+
+Question 5: Move Comments
+g/^\/\//m26
+
+
+Question 6: make command
+r !make --directory=assess3
+make: Entering directory `/home/student/alaa.alokby1/assess3'
+g++ -std=c++17 -o main -Wall main.cpp
+make: Leaving directory `/home/student/alaa.alokby1/assess3'
+
+
+Question 7: run program
+r !assess3/main
+[main.cpp compiled on Nov  7 2018 16:34:46]
+[Program Executed Wed Nov  7 16:37:32 2018 by alaa.alokby1 (UID 7546)]
+Hello World!
+
+
+

@@ -1,0 +1,55 @@
+1. (a):     Write a bash command that will display the value of all environment variables
+            defined in your shell process that begin with a lower-case letter, sorted in 
+            alphabetical order, and numbered.
+
+            printenv | grep '^[a-z].*' | sort | nl
+
+            printenv prints all environment variables. This list pipes into grep which filters out
+            all lines that do not start with a lowercase letter, followed by anything, any number
+            of times. This list is then sorted, and numbered.
+
+
+2. (b):     Write a bash command that will perform an 'ls -ls' command on every directory
+            listed in the PATH variable.
+
+            echo $PATH | awk 'BEGIN{FS=":"}{for(i=0;i<NF;i++){print $i}}' | xargs ls -ld 2>/dev/null
+
+            The $PATH variable is piped into an awk command which assigns the field separator to ":",
+            which allows the awk command to process individual directories within the $PATH variable.
+            The awk command, for each field in the record (which is the entire path), prints out the 
+            directory, which is piped to the ls -ld command. ls -ld can accept the directory as an 
+            argument with the xargs command. All standard errors are directed to /dev/null.
+
+
+3. (c):     Write a 'find' command that will list the name and octal permission of every directory
+            on the system. Redirect all errors to /dev/null, redirect stdout to the file
+            "~/assignment 5 dirlist", and ensure the job runs in the background.
+
+            find / -printf "%p: %m\n" 1>~/"assignment 5 dirlist" 2>/dev/null &
+
+            This command finds the names (%p) and octal permissions (%m) of all files,
+            starting in the root (/) directory. All standard output is directed (1>) to 
+            "assignment 5 dirlist", and all standard errors (2>) are directed to /dev/null.
+            This command is told to run in the background (&).
+
+4. (d):     Write a bash command that will list all processes owned by your UID.
+            
+            pgrep -U 7546
+
+            pgrep -u alaa.alokby1
+
+            Both of these commands list processes owned by my user id. The first command references
+            my actual uid, and the second command references my username.
+
+
+5. (d):     Write a bash command that will kill all process owned by your UID that are NOT executing
+            either 'sshd' or 'bash'.
+            
+            pgrep -v 'sshd|bash' -u alaa.alokby1 | xargs kill 2>/dev/null 1/dev/null &
+
+            This command sorts through all processes that do not include 'sshd' or 'bash' in their 
+            record, including all processes owned by username alaa.alokby1. This list is piped 
+            as an argument to the kill command. Standard output and standard errors are sent to
+            /dev/null. This process is told to run in the background.
+
+
